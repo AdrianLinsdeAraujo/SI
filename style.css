@@ -9,23 +9,26 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
-    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100%;
     background-color: #000; /* céu preto */
 }
 canvas {
     display: block; /* remove scroll e margens */
     z-index: 0; /* fica no fundo */
-    position: absolute;
+    position: fixed; /* fixed para cobrir a tela mesmo ao rolar */
 }
 .caixa {
     position: relative;
-    background-color: rgba(35, 38, 54, 0.8); /* preto com 50% de transparência */
+    background-color: rgba(35, 38, 54, 0.8);
     color: white;
-    padding: 1.25rem;       /* era 20px */
+    padding: 1.25rem;
     width: fit-content;
+    max-width: 100%;
+    box-sizing: border-box;
     margin: auto;
-    border-radius: 0.5rem;  /* era 8px */
+    border-radius: 0.5rem;
     font-family: Arial, sans-serif;
     z-index: 1;
     text-align: center;
@@ -34,7 +37,7 @@ h2 {
     text-align: center;
 }
 .SI-texto {
-    font-size: 2rem;            /* era 200% — agora escala com o :root */
+    font-size: 2rem;
     display: grid;
     place-items: center;
     height: max-content;
@@ -42,16 +45,17 @@ h2 {
     margin: 0;
     line-height: 2;
     font-weight: bold;
-    -webkit-text-stroke: 0.0625rem black; /* era 1px */
+    -webkit-text-stroke: 0.0625rem black;
 }
 .topo {
     position: relative;
     color: white;
     padding: 0;
     width: 60%;
-    height: 5rem;           /* era 80px */
+    height: auto;
+    min-height: 5rem;
     margin: auto;
-    border-radius: 0.5rem;  /* era 8px */
+    border-radius: 0.5rem;
     font-family: Arial, sans-serif;
     z-index: 2;
     background-image: url(imagens/Screenshot_194.png);
@@ -59,40 +63,40 @@ h2 {
     background-position: center;
 }
 .botões {
-    padding: 0 1rem;        /* espaço nas laterais esquerda e direita */
+    padding: 0.5rem 1rem;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;             /* quebra linha se necessário */
+    justify-content: center;
+    gap: 0.4rem;
     width: 100%;
-    box-sizing: border-box; /* importante: evita que o padding estoure a largura */
+    box-sizing: border-box;
 }
 .botao-topo {
     background-color: #1b2e4b;
     color: white;
-    width: 15%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    border: 0.125rem solid rgb(0, 0, 0); /* era 2px */
-    border-radius: 0.3125rem;           /* era 5px */
-    font-size: 0.8rem;                  /* era 65% — agora relativo ao :root */
+    width: auto;
+    padding: 0.3rem 0.6rem;
+    border: 0.125rem solid rgb(0, 0, 0);
+    border-radius: 0.3125rem;
+    font-size: 0.8rem;
     cursor: pointer;
-    margin-bottom: 0.625rem;            /* era 10px */
+    white-space: nowrap;
 }
 .container {
     position: relative;
     width: 35%;
     margin: 0 auto;
-    padding: 1.25rem;       /* era 20px */
+    padding: 1.25rem;
     background-color: rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;           /* era 20px */
+    gap: 1.25rem;
 }
 .Português {
-    gap: 3.125rem;          /* era 50px */
+    gap: 3.125rem;
 }
 
 .botao-download {
-    text-indent: 1.875rem;  /* era 30px */
     color: aquamarine;
 }
 
@@ -103,4 +107,17 @@ h2 {
 .botao-topo.ativo {
     background-color: #2e5080;
     border-color: #4a90d9;
+}
+
+/* ===== RESPONSIVIDADE MOBILE ===== */
+@media (max-width: 768px) {
+    .topo {
+        width: 95%;
+    }
+    .container {
+        width: 90%;
+    }
+    .SI-texto {
+        font-size: 1.4rem;
+    }
 }
