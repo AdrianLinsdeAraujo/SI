@@ -45,7 +45,7 @@ h2 {
     margin: 0;
     line-height: 2;
     font-weight: bold;
-    -webkit-text-stroke: 0.0625rem black;
+    -webkit-text-stroke: 0.04rem black;
 }
 .topo {
     position: relative;
