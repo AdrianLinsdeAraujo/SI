@@ -18,17 +18,17 @@
             Segurança da Informação
         </p>
         <div class="botões">
-            <button class="botao-topo">Português</button>
-            <button class="botao-topo">Matemática</button>
-            <button class="botao-topo">Métodologia</button>
-            <button class="botao-topo">Princípios SI</button>
-            <button class="botao-topo">Programação</button>
-            <button class="botao-topo">Arquitetura PCs</button>
+            <button class="botao-topo ativo" data-target="Português">Português</button>
+            <button class="botao-topo" data-target="Matemática">Matemática</button>
+            <button class="botao-topo" data-target="Metodologia">Métodologia</button>
+            <button class="botao-topo" data-target="PrincípiosSI">Princípios SI</button>
+            <button class="botao-topo" data-target="Programação">Programação</button>
+            <button class="botao-topo" data-target="ArquiteturaPCs">Arquitetura PCs</button>
         </div>
     </div>
 
     <div class="container">
-        <div class="Português">
+        <div class="Português materia">
             <br>
             <div class="caixa">
                 <h2>Português</h2>
@@ -45,12 +45,99 @@
             <br>
             <div class="caixa">
                 <p>
+                    Exercício de Leitura.
+                </p>
+                <p>
+                    Até dia 16/04 às 23:59.
+                </p>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>
                     Template de Seminário para download:
                 </p>
                 <a href="arquivos/Seminário Template.DOCX" download class="botao-download">Download do Template do Seminário.</a>
             </div>
         </div>
+
+        <div class="Matemática materia oculto">
+            <br>
+            <div class="caixa">
+                <h2>Matemática</h2>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>Nenhuma tarefa no momento.</p>
+            </div>
+        </div>
+
+        <div class="Metodologia materia oculto">
+            <br>
+            <div class="caixa">
+                <h2>Metodologia</h2>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>Nenhuma tarefa no momento.</p>
+            </div>
+        </div>
+
+        <div class="PrincípiosSI materia oculto">
+            <br>
+            <div class="caixa">
+                <h2>Princípios SI</h2>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>Nenhuma tarefa no momento.</p>
+            </div>
+        </div>
+
+        <div class="Programação materia oculto">
+            <br>
+            <div class="caixa">
+                <h2>Programação</h2>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>Nenhuma tarefa no momento.</p>
+            </div>
+        </div>
+
+        <div class="ArquiteturaPCs materia oculto">
+            <br>
+            <div class="caixa">
+                <h2>Arquitetura PCs</h2>
+            </div>
+            <br>
+            <div class="caixa">
+                <p>Nenhuma tarefa no momento.</p>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const botoes = document.querySelectorAll('.botao-topo');
+        const materias = document.querySelectorAll('.materia');
+
+        botoes.forEach(botao => {
+            botao.addEventListener('click', () => {
+                // Atualiza botão ativo
+                botoes.forEach(b => b.classList.remove('ativo'));
+                botao.classList.add('ativo');
+
+                // Mostra a matéria correspondente, oculta as demais
+                const alvo = botao.dataset.target;
+                materias.forEach(m => {
+                    if (m.classList.contains(alvo)) {
+                        m.classList.remove('oculto');
+                    } else {
+                        m.classList.add('oculto');
+                    }
+                });
+            });
+        });
+    </script>
 
 
 </body>
