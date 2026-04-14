@@ -1,3 +1,10 @@
+/* ===== ESCALA GLOBAL =====
+   Altere apenas este clamp() para ajustar o ritmo do site inteiro.
+   Valores: mínimo 12px (telas pequenas) → ideal 1.2vw → máximo 18px (telas grandes) */
+:root {
+    font-size: clamp(12px, 1.2vw, 18px);
+}
+
 /* Faz o canvas ocupar toda a tela e fundo preto */
 html, body {
     margin: 0;
@@ -10,88 +17,90 @@ canvas {
     display: block; /* remove scroll e margens */
     z-index: 0; /* fica no fundo */
     position: absolute;
-
 }
 .caixa {
     position: relative;
     background-color: rgba(35, 38, 54, 0.8); /* preto com 50% de transparência */
-    color: white; /* cor do texto */
-    padding: 20px;
+    color: white;
+    padding: 1.25rem;       /* era 20px */
     width: fit-content;
     margin: auto;
-    border-radius: 8px;
+    border-radius: 0.5rem;  /* era 8px */
     font-family: Arial, sans-serif;
-    z-index: 1; /* garante que fique acima do canvas */
-
+    z-index: 1;
+    text-align: center;
 }
 h2 {
     text-align: center;
 }
-.SI-texto{
-    font-size: 200%;
-    display: grid;              /* ativa o grid */
-    place-items: center;        /* centraliza em ambas direções */
+.SI-texto {
+    font-size: 2rem;            /* era 200% — agora escala com o :root */
+    display: grid;
+    place-items: center;
     height: max-content;
     color: white;
     margin: 0;
-    line-height: 2;  /* evita deslocamento vertical */
+    line-height: 2;
     font-weight: bold;
-    -webkit-text-stroke: 1px black;
-
+    -webkit-text-stroke: 0.0625rem black; /* era 1px */
 }
 .topo {
     position: relative;
-    color: white; /* cor do texto */
-    padding: 0px;
+    color: white;
+    padding: 0;
     width: 60%;
-    height: 80px;
+    height: 5rem;           /* era 80px */
     margin: auto;
-    border-radius: 8px;
+    border-radius: 0.5rem;  /* era 8px */
     font-family: Arial, sans-serif;
-    z-index: 2; /* garante que fique acima do canvas */
+    z-index: 2;
     background-image: url(imagens/Screenshot_194.png);
     background-size: cover;
     background-position: center;
 }
 .botões {
-    padding-left: 0%;
+    padding: 0 1rem;        /* espaço nas laterais esquerda e direita */
     display: flex;
-    justify-content: space-between; /* distribui os botões */
-    width: 100%;                    /* ocupa toda a largura */
-
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box; /* importante: evita que o padding estoure a largura */
 }
 .botao-topo {
-  background-color: #1b2e4b;       /* cor de fundo */
-  color: white;                    /* cor do texto */
-  width: 15%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border: 2px solid rgb(0, 0, 0);         /* stroke/contorno */
-  border-radius: 5px;             /* bordas arredondadas */
-  font-size: 65%;
-  cursor: pointer;
-  margin-bottom: 10px;             /* espaço da borda inferior da div */
+    background-color: #1b2e4b;
+    color: white;
+    width: 15%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border: 0.125rem solid rgb(0, 0, 0); /* era 2px */
+    border-radius: 0.3125rem;           /* era 5px */
+    font-size: 0.8rem;                  /* era 65% — agora relativo ao :root */
+    cursor: pointer;
+    margin-bottom: 0.625rem;            /* era 10px */
 }
-
 .container {
     position: relative;
-    width: 35%;              /* largura do contêiner */
-    margin: 0 auto;          /* centraliza horizontalmente */
-    padding: 20px;           /* espaço interno */
+    width: 35%;
+    margin: 0 auto;
+    padding: 1.25rem;       /* era 20px */
     background-color: rgba(255, 255, 255, 0);
-    display: flex;           /* organiza as divs */
-    flex-direction: column;  /* empilha verticalmente */
-    gap: 20px;               /* espaço entre as divs */
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;           /* era 20px */
 }
 .Português {
-    gap: 50px;
+    gap: 3.125rem;          /* era 50px */
 }
-p {
-    text-indent: 30px; /* recuo de 30px no início do parágrafo */
-}
+
 .botao-download {
-    text-indent: 30px;
+    text-indent: 1.875rem;  /* era 30px */
     color: aquamarine;
 }
 
+.oculto {
+    display: none;
+}
 
+.botao-topo.ativo {
+    background-color: #2e5080;
+    border-color: #4a90d9;
+}
